@@ -13,7 +13,7 @@ from caffe2.python.onnx import backend
 import onnxruntime as ort
 
 
-def predict(width, height, confidences, boxes, prob_threshold, iou_threshold=0.3, top_k=-1):
+def predict(width, height, confidences, boxes, prob_threshold, iou_threshold=0.5, top_k=-1):
     boxes = boxes[0]
     confidences = confidences[0]
     picked_box_probs = []
@@ -44,7 +44,7 @@ def predict(width, height, confidences, boxes, prob_threshold, iou_threshold=0.3
 
 label_path = "models/voc-model-labels.txt"
 
-onnx_path = "models/onnx/version-RFB-320.onnx"
+onnx_path = "models/onnx/Mb_Tiny_RFB_FD_train_input_320.onnx"
 class_names = [name.strip() for name in open(label_path).readlines()]
 
 predictor = onnx.load(onnx_path)

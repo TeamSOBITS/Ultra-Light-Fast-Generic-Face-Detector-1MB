@@ -1,0 +1,34 @@
+<!-- ulfg_face_detector/face_detect.launch -->
+
+<launch>
+
+    <group ns = "ulfg_face_detect">
+
+        <param name="ulfg_img_show_flag" type="bool" value="true"/>
+        <param name="ulfg_execute_default" type="bool" value="true"/>
+        <param name="ulfg_pub_result_image" type="bool" value="true"/>
+        <param name="needs_time_stamp" type="bool" value="false"/>
+        <param name="unique_class_flag" type="bool" value="false"/>
+
+        <param name="ulfg_image_topic_name" type="str" value="/rgb/image_raw"/>
+        <param name="ulfg_camera_width_size" type="int" value="1280"/>          <!--define network input size,default optional value 128/160/320/480/640/1280-->
+
+        <param name="net_type" type="str" value="mb_tiny_RFB_fd"/>              <!--The network architecture ,optional:1. mb_tiny_RFB_fd (higher precision) or 2.mb_tiny_fd (faster)-->
+        <param name="test_device" type="str" value="cpu"/>                      <!--cpu or cuda:0-->
+        <param name="ulfg_inScaleFactor" type="double" value="1.0"/>            <!--倍率-->
+        <param name="ulfg_confidenceThreshold" type="double" value="0.8"/>      <!--しきい値-->
+        <param name="ulfg_candidate_size" type="int" value="1000"/>             <!--候補者数-->
+        
+        <param name="ulfg_path" type="str" value="$(find ulfg_face_detector)/"/>
+        <param name="ulfg_label_file_path" type="str" value="$(find ulfg_face_detector)/models/voc-model-labels.txt"/>
+
+        <param name="ulfg_prototxt_name" type="str" value="face.prototxt"/>
+        <param name="ulfg_caffemodel_name" type="str" value="face.caffemodel"/>
+
+
+        <node pkg="ulfg_face_detector" type="face_detect_ros.py" name="face_detect_ros" output="screen"/>
+        <!-- <node pkg="ulfg_face_detector" type="ulfg_tf_broadcaster" name="ulfg_tf_broadcaster" output="screen"/> -->
+        <node pkg="ulfg_face_detector" type="ulfg_tf_broadcaster" name="tf_broadcaster" output="screen"/>
+    </group>
+
+</launch>
