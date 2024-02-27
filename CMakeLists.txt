@@ -19,15 +19,6 @@ find_package(catkin REQUIRED COMPONENTS
   message_filters
 )
 
-add_message_files(
-  FILES
-  BoundingBox.msg
-  BoundingBoxes.msg
-  BoundingBoxesStamp.msg
-  stringArray.msg
-)
-
-
 # Generate added messages and services with any dependencies listed here
  generate_messages(
    DEPENDENCIES
@@ -48,7 +39,3 @@ include_directories(
 
 
 #add_executable(${PROJECT_NAME}_node src/ulfg_face_detector_node.cpp)
-
-add_executable(ulfg_tf_broadcaster src/tf_broadcaster.cpp)
-target_link_libraries(ulfg_tf_broadcaster ${catkin_LIBRARIES})
-add_dependencies(ulfg_tf_broadcaster ${PROJECT_NAME}_generate_messages_cpp)

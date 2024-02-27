@@ -3,7 +3,8 @@
 import rospy
 from std_msgs.msg import UInt8, Bool
 from sensor_msgs.msg import Image
-from ulfg_face_detector.msg import BoundingBox, BoundingBoxes, BoundingBoxesStamp
+# from ulfg_face_detector.msg import BoundingBox, BoundingBoxes, BoundingBoxesStamp
+from sobits_msgs.msg import BoundingBox, BoundingBoxes
 
 ulfg_path = rospy.get_param("ulfg_path")
 import sys
@@ -48,7 +49,6 @@ class UlfgFaceDetector():
         # pub and sub
         self.pub_faces_num = rospy.Publisher("faces_num", UInt8, queue_size=10)
         self.pub_faces_rect = rospy.Publisher("faces_rect", BoundingBoxes, queue_size=10)
-        self.pub_faces_rect_stamp = rospy.Publisher("faces_rect_stamp", BoundingBoxesStamp, queue_size=10)
         self.pub_result_img = rospy.Publisher("detect_result", Image, queue_size=10)
         self.sub_img = rospy.Subscriber(self.sub_img_topic_name, Image, self.img_cb)
         self.sub_ctrl = rospy.Subscriber("detect_ctrl", Bool, self.ctrl_cb)
@@ -105,16 +105,15 @@ class UlfgFaceDetector():
             box = boxes[i, :]
 
             face_bbox = BoundingBox()
-            face_bbox.x = int(box[0])
-            face_bbox.y = int(box[1])
-            face_bbox.width = int(box[2] - box[0])
-            face_bbox.height = int(box[3] - box[1])
+            face_bbox.xmin = int(box[0])
+            face_bbox.ymin = int(box[1])
+            face_bbox.xmax = int(box[2])
+            face_bbox.ymax = int(box[3])
             face_bbox.probability = probs[i]
             if self.unique_class_flag:
                 face_bbox.Class = "face_{}".format(i)
             else:
                 face_bbox.Class = "face"
-            face_bbox_array.boundingBoxes.append(face_bbox)
 
             label = f"{face_bbox.Class} {probs[i]:.2f}"
             cv2.rectangle(orig_image, (int(box[0]), int(box[1])), (int(box[2]), int(box[3])), (0, 255, 0), 4)
@@ -132,14 +131,6 @@ class UlfgFaceDetector():
             faces_num = UInt8()
             faces_num.data = labels.size(0)
             self.pub_faces_num.publish(faces_num)
-
-            if self.needs_time_stamp:
-                face_bbox_array_stamp = BoundingBoxesStamp()
-                face_bbox_array_stamp.boundingBoxes = face_bbox_array.boundingBoxes
-                face_bbox_array_stamp.header = msg.header
-                self.pub_faces_rect_stamp.publish(face_bbox_array_stamp)
-            else:
-                self.pub_faces_rect.publish(face_bbox_array)
             
         if self.pub_result_flag:
             result_img_msg = CvBridge().cv2_to_imgmsg(orig_image, "bgr8")

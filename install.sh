@@ -12,3 +12,6 @@ case "$yn" in
 pytorchのGPU版を入れたい方はこちら
 https://pytorch.org/";;
 esac
+
+cd ~/catkin_ws/src/
+git clone https://github.com/TeamSOBITS/bbox_to_tf.git
