@@ -8,7 +8,7 @@
         <param name="ulfg_img_show_flag" type="bool" value="true"/>
         <param name="ulfg_execute_default" type="bool" value="true"/>
         <param name="ulfg_pub_result_image" type="bool" value="true"/>
-        <param name="needs_time_stamp" type="bool" value="false"/>
+        <param name="needs_time_stamp" type="bool" value="true"/>
         <param name="unique_class_flag" type="bool" value="false"/>
 
         <param name="ulfg_image_topic_name" type="str" value="$(arg img_topic_name)"/>

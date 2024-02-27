@@ -116,6 +116,7 @@ class UlfgFaceDetector():
                 face_bbox.Class = "face"
 
             label = f"{face_bbox.Class} {probs[i]:.2f}"
+            face_bbox_array.bounding_boxes.append(face_bbox)
             cv2.rectangle(orig_image, (int(box[0]), int(box[1])), (int(box[2]), int(box[3])), (0, 255, 0), 4)
 
             cv2.putText(orig_image, label,
@@ -124,6 +125,7 @@ class UlfgFaceDetector():
                         0.5,  # font scale
                         (0, 0, 255),
                         2)  # line type
+            
         orig_image = cv2.resize(orig_image, None, None, fx=0.8, fy=0.8)
         self.sum += boxes.size(0)
 
@@ -131,6 +133,7 @@ class UlfgFaceDetector():
             faces_num = UInt8()
             faces_num.data = labels.size(0)
             self.pub_faces_num.publish(faces_num)
+            self.pub_faces_rect.publish(face_bbox_array)
             
         if self.pub_result_flag:
             result_img_msg = CvBridge().cv2_to_imgmsg(orig_image, "bgr8")
