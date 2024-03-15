@@ -12,142 +12,142 @@
 
 <!-- 目次 -->
 <details>
-  <summary>目次</summary>
+  <summary>Table of Contents</summary>
   <ol>
     <li>
-      <a href="#概要">概要</a>
+      <a href="#Introduction">Introduction</a>
     </li>
     <li>
-      <a href="#セットアップ">セットアップ</a>
+      <a href="#Setup">Setup</a>
       <ul>
-        <li><a href="#環境条件">環境条件</a></li>
-        <li><a href="#インストール方法">インストール方法</a></li>
+        <li><a href="#Prerequisites">Prerequisites</a></li>
+        <li><a href="#Installation">Installation</a></li>
       </ul>
     </li>
-    <li><a href="#実行方法">実行方法</a></li>
+    <li><a href="#Launch and Usage">Launch and Usage</a></li>
     <!-- <li><a href="#マイルストーン">マイルストーン</a></li> -->
     <!-- <li><a href="#変更履歴">変更履歴</a></li> -->
     <!-- <li><a href="#contributing">Contributing</a></li> -->
     <!-- <li><a href="#license">License</a></li> -->
-    <li><a href="#参考文献">参考文献</a></li>
+    <li><a href="#References">References</a></li>
   </ol>
 </details>
 
 
 
 <!-- レポジトリの概要 -->
-## 概要
+## Introduction
 
 <!-- [![Product Name Screen Shot][product-screenshot]](https://example.com) -->
 
-CPUでもサクサク動く顔検出パッケージです．
+This is a face detection package that runs smoothly on CPU.
 
-<p align="right">(<a href="#readme-top">上に戻る</a>)</p>
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
 
 <!-- セットアップ -->
-## セットアップ
-本レポジトリのセットアップ方法について説明します．
+## Setup
+Here, we will explain the setup process for this repository.
 
-### 環境条件
+### Prerequisites
 | System  | Version |
 | ------------- | ------------- |
 | Ubuntu | 20.04 (Focal Fossa) |
 | ROS | Noetic Ninjemys |
 | Python | 3.0~ |
 
-### インストール方法
+### Installation
 
-1. ROSの`src`フォルダに移動します．
+1. Move to the 'src' folder.
    ```sh
    $ cd　~/catkin_ws/src/
    ```
-2. 本レポジトリをcloneします．
+2. Clone this repository.
    ```sh
    $ git clone https://github.com/TeamSOBITS/Ultra-Light-Fast-Generic-Face-Detector-1MB.git
    ```
-3. レポジトリの中へ移動します．
+3. Navigate tp the repository.
    ```sh
    $ cd Ultra-Light-Fast-Generic-Face-Detector-1MB
    ```
-4. 依存パッケージをインストールします．
+4. Install dependencies.
     ```sh
     $ bash install.sh
     ```
-5. パッケージをコンパイルします．
+5. Compile the package.
    ```sh
    $ cd ~/catkin_ws/
    $ catkin_make
    ```
 
-<p align="right">(<a href="#readme-top">上に戻る</a>)</p>
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
 
 <!-- 実行・操作方法 -->
-## 実行方法
-実行方法は，tfを使用しないNormal Modeとtfを使用するTF Modeの２種類あります．
-Normal ModeはPCのカメラでも使用することが出来ます．TF Modeは点群の取れるカメラ（例：Azure kinect）を接続して使用してください．
+## Launch and Usage
+There are two modes of execution: Normal Mode, which does not use tf, and TF Mode, which uses tf.
+Normal Mode can be also used with PC cameras.TF Mode should be used by connecting a camera (e.g. Azure kinect) that can take point clouds.
 
 
-### Normal Mode（tfを使用しない場合）
-ここではPC内蔵カメラを使用する方法を紹介します．
-1. PC内蔵カメラを起動する\
+### Normal Mode（tf not used）
+Here we will show you how to use the camera built into the PC.
+1. Run camera.launch \
     ```sh
     $ roslaunch ulfg_face_detector camera.launch
     ```
-    これを行うと初回はエラーが出ます．エラー文は次のように出ます．最後の「001/003」部分はPCによって数字が変化します．
+    Doing this will result in an error the first time.The error statement will be as follows.The last part "001/003" changes the number depending on the PC.
     ```sh
     [ERROR] [1710498328.874181139]: Permission denied opening /dev/bus/usb/001/003
     [ERROR] [1710498328.874351558]: Invalid camera calibration URL: /dev/bus/usb/001/003
     ```
-    このエラー文を見て次のコマンドを打ってください．
+    See this error statement and type the following command.
     ```sh
-    $ sudo chmod o+w /dev/bus/usb/001/003　# /dev/bus/usb/001/003の部分をエラーで出てきたものに変えてコマンドを打つ
+    $ sudo chmod o+w /dev/bus/usb/001/003　# /dev/bus/usb/001/003 change
     ```
-    そしてもう一度camera.launchをたてます．
+    Then run camera.launch again.
     ```sh
     $ roslaunch ulfg_face_detector camera.launch
     ```
-    これでPC内蔵カメラが起動します．
+    This will activate the camera built into the PC.
 
-2. face_detect.launchをたてる．
+2. Run face_detect.launch．
     ```sh
     $ roslaunch ulfg_face_detector face_detect.launch
     ```
-    これで顔検出ができるようになります．これでエラーが発生する場合はface_detect.launchの13行目
+    This will enable face detection.If this causes an error, line 13 of face_detect.launch
     ```sh
     <param name="ulfg_image_topic_name" type="str" value="/camera/rgb/image_raw"/> 
     ```
-    このvalueを変更してもう一度試しましょう．
+    Change this value and try again.
 
-3. 検出した顔を識別したいとき
-    face_detect.launchの11行目
+3. When you want to identify the detected face
+    Line 11 of face_detect.launch
     ```sh
     <param name="unique_class_flag" type="bool" value="false"/> 
     ```
-    このvalueを"true"にすると検出した顔をナンバリングします．
+    Changing this value to "true" will number the detected faces.
 
 
-### TF Mode（tfを使用する場合）
-ここではAzure kinectを使用する方法を紹介します．
-1. Azure kinectを起動する．
+### TF Mode（tf use）
+Here we show you how to use Azure kinect.
+1. Start Azure kinect.
     ```sh
     $ roslaunch azure_kinect_ros_driver driver.launch
     ```
-2. face_detect_with_tf.launchをたてる．
+2. Run face_detect_with_tf.launch.
     ```sh
     $ roslaunch ulfg_face_detector face_detect_with_tf.launch
     ```
-    違うカメラを使用する場合はface_detect_with_tf.launchの35行目
+    If a different camera is used, line 35 of face_detect_with_tf.launch
     ```sh
     $ <arg name="base_frame_name" value="camera_depth_frame"/> 
     ```
-    このvalueを適切なものに変更してください．
+    Change this value to something appropriate.
 
 
-<p align="right">(<a href="#readme-top">上に戻る</a>)</p>
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
 
@@ -209,12 +209,12 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 
 
 <!-- 参考文献 -->
-## 参考文献
+## References
 
 <!-- * [ROS Navigationスタックソフトウェア設計仕様](https://robo-marc.github.io/navigation_documents/)
 * [explore_lite](http://wiki.ros.org/explore_lite) -->
 
-<p align="right">(<a href="#readme-top">上に戻る</a>)</p>
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
