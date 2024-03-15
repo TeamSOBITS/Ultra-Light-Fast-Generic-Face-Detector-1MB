@@ -96,6 +96,7 @@ class UlfgFaceDetector():
 
         image = cv2.cvtColor(orig_image, cv2.COLOR_BGR2RGB)
         face_bbox_array = BoundingBoxes()
+        face_bbox_array.header = msg.header
         self.timer.start()
         # image = cv2.resize(image, (640, 480))
         boxes, labels, probs = self.predictor.predict(image, self.candidate_size / 2, self.confidence_threshold)
