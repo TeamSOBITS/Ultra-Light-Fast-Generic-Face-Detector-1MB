@@ -120,7 +120,12 @@ Here we will show you how to use the camera built into the PC.
     ```sh
     <param name="ulfg_image_topic_name" type="str" value="/camera/rgb/image_raw"/> 
     ```
-    Change this value and try again.
+    Change this value and try again.\
+    If a different camera is used, line 13 of face_detect.launch
+    ```sh
+    <param name="ulfg_image_topic_name" type="str" value="/camera/rgb/image_raw"/>
+    ```
+    Change this value to something appropriate.
 
 3. When you want to identify the detected face
     Line 11 of face_detect.launch
@@ -140,11 +145,15 @@ Here we show you how to use Azure kinect.
     ```sh
     $ roslaunch ulfg_face_detector face_detect_with_tf.launch
     ```
-    If a different camera is used, line 35 of face_detect_with_tf.launch
+    If a different camera is used, line 5,35,37 of face_detect_with_tf.launch
     ```sh
+    $ <arg name="img_topic_name"           default="/camera/rgb/image_raw"/>
+
     $ <arg name="base_frame_name" value="camera_depth_frame"/> 
+
+    $ <arg name="cloud_topic_name" value="/camera/depth_registered/points"/>
     ```
-    Change this value to something appropriate.
+    Change this default and value to something appropriate.
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>

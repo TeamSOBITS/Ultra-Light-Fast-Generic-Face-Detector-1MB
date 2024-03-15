@@ -120,7 +120,12 @@ Normal ModeはPCのカメラでも使用することが出来ます．TF Modeは
     ```sh
     <param name="ulfg_image_topic_name" type="str" value="/camera/rgb/image_raw"/> 
     ```
-    このvalueを変更してもう一度試しましょう．
+    このvalueを変更してもう一度試しましょう．\
+    違うカメラを使用する場合はface_detect.launchの13行目
+    ```sh
+    <param name="ulfg_image_topic_name" type="str" value="/camera/rgb/image_raw"/>
+    ```
+    このvalueを適切なものに変更しましょう．
 
 3. 検出した顔を識別したいとき
     face_detect.launchの11行目
@@ -140,11 +145,15 @@ Normal ModeはPCのカメラでも使用することが出来ます．TF Modeは
     ```sh
     $ roslaunch ulfg_face_detector face_detect_with_tf.launch
     ```
-    違うカメラを使用する場合はface_detect_with_tf.launchの35行目
+    違うカメラを使用する場合はface_detect_with_tf.launchの5,35,37行目
     ```sh
+    $ <arg name="img_topic_name"           default="/camera/rgb/image_raw"/>
+
     $ <arg name="base_frame_name" value="camera_depth_frame"/> 
+
+    $ <arg name="cloud_topic_name" value="/camera/depth_registered/points"/>
     ```
-    このvalueを適切なものに変更してください．
+    このdefaltとvalueを適切なものに変更しましょう．
 
 
 <p align="right">(<a href="#readme-top">上に戻る</a>)</p>
