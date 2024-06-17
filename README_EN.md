@@ -136,11 +136,8 @@ Here we will show you how to use the camera built into the PC.
 
 
 ### TF Mode（tf use）
-Here we show you how to use Azure kinect.
-1. Start Azure kinect.
-    ```sh
-    $ roslaunch azure_kinect_ros_driver driver.launch
-    ```
+Here we show you how to use RGB-D camera.
+1. Start RGB-D camera.
 2. Run face_detect_with_tf.launch.
     ```sh
     $ roslaunch ulfg_face_detector face_detect_with_tf.launch

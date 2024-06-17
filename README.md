@@ -136,11 +136,8 @@ Normal ModeはPCのカメラでも使用することが出来ます．TF Modeは
 
 
 ### TF Mode（tfを使用する場合）
-ここではAzure kinectを使用する方法を紹介します．
-1. Azure kinectを起動する．
-    ```sh
-    $ roslaunch azure_kinect_ros_driver driver.launch
-    ```
+ここではRGB-Dカメラが必要になります．
+1. RGB-Dカメラを起動する．
 2. face_detect_with_tf.launchをたてる．
     ```sh
     $ roslaunch ulfg_face_detector face_detect_with_tf.launch
