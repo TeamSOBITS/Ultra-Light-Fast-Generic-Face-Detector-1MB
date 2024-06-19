@@ -65,11 +65,11 @@ CPUでもサクサク動く顔検出パッケージです．
    ```
 2. 本レポジトリをcloneします．
    ```sh
-   $ git clone https://github.com/TeamSOBITS/Ultra-Light-Fast-Generic-Face-Detector-1MB.git
+   $ git clone https://github.com/TeamSOBITS/ulfg_face_detector.git
    ```
 3. レポジトリの中へ移動します．
    ```sh
-   $ cd Ultra-Light-Fast-Generic-Face-Detector-1MB
+   $ cd ulfg_face_detector
    ```
 4. 依存パッケージをインストールします．
     ```sh
@@ -200,16 +200,16 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/TeamSOBITS/Ultra-Light-Fast-Generic-Face-Detector-1MB.svg?style=for-the-badge
-[contributors-url]: https://github.com/TeamSOBITS/Ultra-Light-Fast-Generic-Face-Detector-1MB/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/TeamSOBITS/Ultra-Light-Fast-Generic-Face-Detector-1MB.svg?style=for-the-badge
-[forks-url]: https://github.com/TeamSOBITS/Ultra-Light-Fast-Generic-Face-Detector-1MB/network/members
-[stars-shield]: https://img.shields.io/github/stars/TeamSOBITS/Ultra-Light-Fast-Generic-Face-Detector-1MB.svg?style=for-the-badge
-[stars-url]: https://github.com/TeamSOBITS/Ultra-Light-Fast-Generic-Face-Detector-1MB/stargazers
-[issues-shield]: https://img.shields.io/github/issues/TeamSOBITS/Ultra-Light-Fast-Generic-Face-Detector-1MB.svg?style=for-the-badge
-[issues-url]: https://github.com/TeamSOBITS/Ultra-Light-Fast-Generic-Face-Detector-1MB/issues
-[license-shield]: https://img.shields.io/github/license/TeamSOBITS/Ultra-Light-Fast-Generic-Face-Detector-1MB.svg?style=for-the-badge
-[license-url]: https://github.com/TeamSOBITS/Ultra-Light-Fast-Generic-Face-Detector-1MB/blob/master/LICENSE.txt
+[contributors-shield]: https://img.shields.io/github/contributors/TeamSOBITS/ulfg_face_detector.svg?style=for-the-badge
+[contributors-url]: https://github.com/TeamSOBITS/ulfg_face_detector/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/TeamSOBITS/ulfg_face_detector.svg?style=for-the-badge
+[forks-url]: https://github.com/TeamSOBITS/ulfg_face_detector/network/members
+[stars-shield]: https://img.shields.io/github/stars/TeamSOBITS/ulfg_face_detector.svg?style=for-the-badge
+[stars-url]: https://github.com/TeamSOBITS/ulfg_face_detector/stargazers
+[issues-shield]: https://img.shields.io/github/issues/TeamSOBITS/ulfg_face_detector.svg?style=for-the-badge
+[issues-url]: https://github.com/TeamSOBITS/ulfg_face_detector/issues
+[license-shield]: https://img.shields.io/github/license/TeamSOBITS/ulfg_face_detector.svg?style=for-the-badge
+[license-url]: https://github.com/TeamSOBITS/ulfg_face_detector/blob/master/LICENSE.txt
 
 
 
