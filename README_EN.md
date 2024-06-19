@@ -8,7 +8,7 @@
 [![Issues][issues-shield]][issues-url]
 [![License][license-shield]][license-url]
 
-# Ultra-Light-Fast-Generic-Face-Detector-1MB
+# light_face_detector
 
 <!-- 目次 -->
 <details>
@@ -103,11 +103,6 @@ Here we will show you how to use the camera built into the PC.
     <param name="ulfg_image_topic_name" type="str" value="/camera/rgb/image_raw"/> 
     ```
     Change this value and try again.\
-    If a different camera is used, line 13 of face_detect.launch
-    ```sh
-    <param name="ulfg_image_topic_name" type="str" value="/camera/rgb/image_raw"/>
-    ```
-    Change this value to something appropriate.
 
 3. When you want to identify the detected face
     Line 11 of face_detect.launch
@@ -206,16 +201,17 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/github_username/repo_name.svg?style=for-the-badge
-[contributors-url]: https://github.com/github_username/repo_name/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/github_username/repo_name.svg?style=for-the-badge
-[forks-url]: https://github.com/github_username/repo_name/network/members
-[stars-shield]: https://img.shields.io/github/stars/github_username/repo_name.svg?style=for-the-badge
-[stars-url]: https://github.com/github_username/repo_name/stargazers
-[issues-shield]: https://img.shields.io/github/issues/github_username/repo_name.svg?style=for-the-badge
-[issues-url]: https://github.com/github_username/repo_name/issues
-[license-shield]: https://img.shields.io/github/license/github_username/repo_name.svg?style=for-the-badge
-[license-url]: https://github.com/github_username/repo_name/blob/master/LICENSE.txt
+[contributors-shield]: https://img.shields.io/github/contributors/TeamSOBITS/Ultra-Light-Fast-Generic-Face-Detector-1MB.svg?style=for-the-badge
+[contributors-url]: https://github.com/TeamSOBITS/Ultra-Light-Fast-Generic-Face-Detector-1MB/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/TeamSOBITS/Ultra-Light-Fast-Generic-Face-Detector-1MB.svg?style=for-the-badge
+[forks-url]: https://github.com/TeamSOBITS/Ultra-Light-Fast-Generic-Face-Detector-1MB/network/members
+[stars-shield]: https://img.shields.io/github/stars/TeamSOBITS/Ultra-Light-Fast-Generic-Face-Detector-1MB.svg?style=for-the-badge
+[stars-url]: https://github.com/TeamSOBITS/Ultra-Light-Fast-Generic-Face-Detector-1MB/stargazers
+[issues-shield]: https://img.shields.io/github/issues/TeamSOBITS/Ultra-Light-Fast-Generic-Face-Detector-1MB.svg?style=for-the-badge
+[issues-url]: https://github.com/TeamSOBITS/Ultra-Light-Fast-Generic-Face-Detector-1MB/issues
+[license-shield]: https://img.shields.io/github/license/TeamSOBITS/Ultra-Light-Fast-Generic-Face-Detector-1MB.svg?style=for-the-badge
+[license-url]: https://github.com/TeamSOBITS/Ultra-Light-Fast-Generic-Face-Detector-1MB/blob/master/LICENSE.txt
+
 
 
 
