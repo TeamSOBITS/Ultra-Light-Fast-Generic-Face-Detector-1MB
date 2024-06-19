@@ -2,11 +2,11 @@
 
 [JP](README.md) | [EN](README_EN.md) | [FORK](README_FORK.md)
 
-<!-- [![Contributors][contributors-shield]][contributors-url]
+[![Contributors][contributors-shield]][contributors-url]
 [![Forks][forks-shield]][forks-url]
 [![Stargazers][stars-shield]][stars-url]
-[![Issues][issues-shield]][issues-url] -->
-<!-- [![MIT License][license-shield]][license-url] -->
+[![Issues][issues-shield]][issues-url]
+[![License][license-shield]][license-url]
 
 # Ultra-Light-Fast-Generic-Face-Detector-1MB
 
@@ -93,25 +93,7 @@ Normal Mode can be also used with PC cameras.TF Mode should be used by connectin
 
 ### Normal Mode（tf not used）
 Here we will show you how to use the camera built into the PC.
-1. Run camera.launch \
-    ```sh
-    $ roslaunch ulfg_face_detector camera.launch
-    ```
-    Doing this will result in an error the first time.The error statement will be as follows.The last part "001/003" changes the number depending on the PC.
-    ```sh
-    [ERROR] [1710498328.874181139]: Permission denied opening /dev/bus/usb/001/003
-    [ERROR] [1710498328.874351558]: Invalid camera calibration URL: /dev/bus/usb/001/003
-    ```
-    See this error statement and type the following command.
-    ```sh
-    $ sudo chmod o+w /dev/bus/usb/001/003　# /dev/bus/usb/001/003 change
-    ```
-    Then run camera.launch again.
-    ```sh
-    $ roslaunch ulfg_face_detector camera.launch
-    ```
-    This will activate the camera built into the PC.
-
+1. Run the camera.
 2. Run face_detect.launch．
     ```sh
     $ roslaunch ulfg_face_detector face_detect.launch
@@ -232,8 +214,8 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 [stars-url]: https://github.com/github_username/repo_name/stargazers
 [issues-shield]: https://img.shields.io/github/issues/github_username/repo_name.svg?style=for-the-badge
 [issues-url]: https://github.com/github_username/repo_name/issues
-<!-- [license-shield]: https://img.shields.io/github/license/github_username/repo_name.svg?style=for-the-badge
-[license-url]: https://github.com/github_username/repo_name/blob/master/LICENSE.txt -->
+[license-shield]: https://img.shields.io/github/license/github_username/repo_name.svg?style=for-the-badge
+[license-url]: https://github.com/github_username/repo_name/blob/master/LICENSE.txt
 
 
 

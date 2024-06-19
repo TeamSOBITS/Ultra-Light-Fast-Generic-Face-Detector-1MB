@@ -2,11 +2,11 @@
 
 [JP](README.md) | [EN](README_EN.md) | [FORK](README_FORK.md)
 
-<!-- [![Contributors][contributors-shield]][contributors-url]
+[![Contributors][contributors-shield]][contributors-url]
 [![Forks][forks-shield]][forks-url]
 [![Stargazers][stars-shield]][stars-url]
-[![Issues][issues-shield]][issues-url] -->
-<!-- [![MIT License][license-shield]][license-url] -->
+[![Issues][issues-shield]][issues-url]
+[![License][license-shield]][license-url]
 
 # Ultra-Light-Fast-Generic-Face-Detector-1MB
 
@@ -92,26 +92,7 @@ Normal ModeはPCのカメラでも使用することが出来ます．TF Modeは
 
 
 ### Normal Mode（tfを使用しない場合）
-ここではPC内蔵カメラを使用する方法を紹介します．
-1. PC内蔵カメラを起動する\
-    ```sh
-    $ roslaunch ulfg_face_detector camera.launch
-    ```
-    これを行うと初回はエラーが出ます．エラー文は次のように出ます．最後の「001/003」部分はPCによって数字が変化します．
-    ```sh
-    [ERROR] [1710498328.874181139]: Permission denied opening /dev/bus/usb/001/003
-    [ERROR] [1710498328.874351558]: Invalid camera calibration URL: /dev/bus/usb/001/003
-    ```
-    このエラー文を見て次のコマンドを打ってください．
-    ```sh
-    $ sudo chmod o+w /dev/bus/usb/001/003　# /dev/bus/usb/001/003の部分をエラーで出てきたものに変えてコマンドを打つ
-    ```
-    そしてもう一度camera.launchをたてます．
-    ```sh
-    $ roslaunch ulfg_face_detector camera.launch
-    ```
-    これでPC内蔵カメラが起動します．
-
+1. カメラを起動する. 
 2. face_detect.launchをたてる．
     ```sh
     $ roslaunch ulfg_face_detector face_detect.launch
@@ -232,8 +213,8 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 [stars-url]: https://github.com/github_username/repo_name/stargazers
 [issues-shield]: https://img.shields.io/github/issues/github_username/repo_name.svg?style=for-the-badge
 [issues-url]: https://github.com/github_username/repo_name/issues
-<!-- [license-shield]: https://img.shields.io/github/license/github_username/repo_name.svg?style=for-the-badge
-[license-url]: https://github.com/github_username/repo_name/blob/master/LICENSE.txt -->
+[license-shield]: https://img.shields.io/github/license/github_username/repo_name.svg?style=for-the-badge
+[license-url]: https://github.com/github_username/repo_name/blob/master/LICENSE.txt
 
 
 
