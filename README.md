@@ -8,7 +8,7 @@
 [![Issues][issues-shield]][issues-url]
 [![License][license-shield]][license-url]
 
-# light_face_detector
+# ulfg_face_detector
 
 <!-- 目次 -->
 <details>
