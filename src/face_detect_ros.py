@@ -5,6 +5,7 @@ from std_msgs.msg import UInt8, Bool
 from sensor_msgs.msg import Image
 # from ulfg_face_detector.msg import BoundingBox, BoundingBoxes, BoundingBoxesStamp
 from sobits_msgs.msg import BoundingBox, BoundingBoxes
+from sobits_msgs.srv import RunCtrl, RunCtrlResponse
 
 ulfg_path = rospy.get_param("ulfg_path")
 import sys
@@ -51,7 +52,7 @@ class UlfgFaceDetector():
         self.pub_faces_rect = rospy.Publisher("faces_rect", BoundingBoxes, queue_size=10)
         self.pub_result_img = rospy.Publisher("detect_result", Image, queue_size=10)
         self.sub_img = rospy.Subscriber(self.sub_img_topic_name, Image, self.img_cb)
-        self.sub_ctrl = rospy.Subscriber("detect_ctrl", Bool, self.ctrl_cb)
+        self.sub_ctrl = rospy.Service("run_ctrl", RunCtrl, self.ctrl_cb)
         
         self.timer = Timer()
         self.read_files()
@@ -66,7 +67,7 @@ class UlfgFaceDetector():
             self.model_path = "{}/models/pretrained/Mb_Tiny_RFB_FD_train_input_{}.pth".format(ulfg_path, self.input_img_size)
             self.net = create_Mb_Tiny_RFB_fd(len(self.class_names), is_test=True, device=test_device)
             self.predictor = create_Mb_Tiny_RFB_fd_predictor(self.net, candidate_size=self.candidate_size, device=test_device)
-            print("read_elif")
+            # print("read_elif")
         else:
             print("The net type is wrong!")
             return -1
@@ -74,17 +75,19 @@ class UlfgFaceDetector():
         return 0
 
     def ctrl_cb(self, msg):
-        self.execute_flag = msg.data
+        self.execute_flag = msg.request
         if self.execute_flag:
             rospy.loginfo("ULFG_Face_Detection -> Start")
-            print("ctrl_if")
+            return RunCtrlResponse(response=True)
         else:
             rospy.loginfo("ULFG_Face_Detection -> Stopped")
-            print("ctrl_elif")
             try:
                 cv2.destroyAllWindows()
+                return RunCtrlResponse(response=True)
             except Exception as err:
                 rospy.logerr(err)
+                return RunCtrlResponse(response=False)
+        return RunCtrlResponse(response=False)
 
     def img_cb(self, msg):
         if not self.execute_flag:   return
